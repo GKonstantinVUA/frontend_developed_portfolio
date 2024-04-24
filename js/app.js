@@ -105,30 +105,10 @@
         }
     };
     btnUp.addEventListener();
-    document.querySelectorAll("section");
-    let navLinks = document.querySelectorAll(".menu-block__link");
     window.onscroll = () => {
         let header = document.querySelector("header");
         header.classList.toggle("sticky", window.scrollY > 100);
     };
-    navLinks.forEach((link => {
-        link.addEventListener("click", (function(event) {
-            event.preventDefault();
-            let targetId = this.getAttribute("href");
-            let targetSection = document.querySelector(targetId);
-            let headerHeight = document.querySelector(".header").offsetHeight;
-            let offset = targetSection.offsetTop - headerHeight;
-            window.scrollTo({
-                top: offset
-            });
-            let animateItems = targetSection.querySelectorAll(".animate-item");
-            animateItems.forEach((item => {
-                item.style.animation = "none";
-                void item.offsetWidth;
-                item.style.animation = null;
-            }));
-        }));
-    }));
     window["FLS"] = true;
     menuInit();
 })();

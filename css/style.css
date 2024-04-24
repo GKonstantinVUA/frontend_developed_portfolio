@@ -259,16 +259,19 @@ table {
   right: 0;
   width: 100%;
   z-index: 100;
-  padding: 1.25em 8%
+  padding: .625em 2%;
+  min-height: 5.625em
 }
 .header {
+  display: flex;
   transition: background-color .2s ease-in
 }
 .header.sticky {
-  background-color: #112e42;
+  background-color: #081b29;
   border-bottom: .03125em solid #c47b05
 }
 .header__container {
+  width: 100%;
   display: flex;
   -webkit-column-gap: 1.25em;
   -moz-column-gap: 1.25em;
@@ -277,12 +280,14 @@ table {
   justify-content: space-between
 }
 .header__link-icon {
+  z-index: 3
+}
+.header__link-icon {
   position: relative
 }
 .menu__body {
   font-size: 1.5rem;
-  font-weight: 500;
-  position: relative
+  font-weight: 500
 }
 .menu__list {
   display: flex;
@@ -1005,6 +1010,11 @@ html {
     padding-left: 2em
   }
 }
+@media (min-width:50.25em) {
+  .menu__body {
+    position: relative
+  }
+}
 @media (min-width:67.625em) {
   .education__inner-border {
     border-right: .1875em solid #00abf0
@@ -1120,38 +1130,49 @@ html {
     flex: 1 1 100%
   }
 }
-@media (max-width:47.99875em) {
+@media (max-width:50.18625em) {
   .menu__body {
+    background: #112e42;
     position: fixed;
     width: 100%;
-    height: 100%;
+    height: 60%;
     left: -100%;
-    top: 0;
+    top: 4.375rem;
     overflow: auto;
     padding: 3.125rem .9375rem .9375rem 1.875rem;
-    transition: left .3s
+    transition: left .3s;
+    border-bottom: .0625em solid #c47b05
   }
   .menu__body::before {
     content: "";
     position: fixed;
     width: 100%;
     height: 4.375rem;
-    left: -100%;
+    right: -100%;
     top: 0;
-    transition: left .3s;
-    z-index: 2
+    transition: right .3s;
+    z-index: 2;
+    background: #081b29;
+    border-bottom: .0625em solid #c47b05
   }
   .menu-open .menu__body {
     left: 0
   }
   .menu-open .menu__body::before {
-    left: 0
+    right: 0
+  }
+  .menu__list {
+    flex-direction: column;
+    gap: 1.5em;
+    font-size: 2.25rem
   }
   .icon-menu {
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     position: relative;
-    width: 1.875rem;
-    height: 1.125rem;
+    width: 1.75rem;
+    height: 1.25rem;
     z-index: 5
   }
   .icon-menu span,
@@ -1163,7 +1184,7 @@ html {
     position: absolute;
     width: 100%;
     height: .125rem;
-    background-color: #000
+    background-color: #ededed
   }
   .icon-menu::before {
     top: 0
@@ -1175,7 +1196,8 @@ html {
     top: calc(50% - .0625rem)
   }
   .menu-open .icon-menu span {
-    width: 0
+    -webkit-transform: scale(0);
+    transform: scale(0)
   }
   .menu-open .icon-menu::before {
     top: calc(50% - .0625rem);
@@ -1187,17 +1209,22 @@ html {
     -webkit-transform: rotate(45deg);
     transform: rotate(45deg)
   }
+  .header--setup {
+    min-height: 4.375em
+  }
+}
+@media (max-width:50.18625em) and (any-hover:none) {
+  .icon-menu {
+    cursor: default
+  }
+}
+@media (max-width:47.99875em) {
   .hero__img {
     -o-object-fit: contain;
     object-fit: contain
   }
   .education {
     text-align: center
-  }
-}
-@media (max-width:47.99875em) and (any-hover:none) {
-  .icon-menu {
-    cursor: default
   }
 }
 @media (max-width:33.5em) {
