@@ -1036,7 +1036,7 @@ body {
   transition: all .35s ease-in;
   z-index: -1
 }
-.scroll-up--hide {
+.scroll-up {
   color: #00abf0;
   position: relative;
   font-family: IconFont;
@@ -1056,7 +1056,7 @@ body {
   z-index: 10;
   overflow: hidden
 }
-.scroll-up--hide::before {
+.scroll-up::before {
   position: absolute;
   left: 0;
   top: 0;
@@ -1066,6 +1066,9 @@ body {
   background-color: #00abf0;
   z-index: -1;
   transition: all .45s ease-in
+}
+.scroll-up--hide {
+  display: none
 }
 @media (min-width:47.99875em) {
   .education__container {
@@ -1406,18 +1409,18 @@ body {
   .skills__box:hover::before {
     width: 100%
   }
-  .scroll-up--hide {
+  .scroll-up {
     cursor: pointer
   }
-  .scroll-up--hide:hover::before {
+  .scroll-up:hover::before {
     width: 100%
   }
 }
 @media (any-hover:hover) and (pointer:fine) {
-  .scroll-up--hide {
+  .scroll-up {
     cursor: pointer
   }
-  .scroll-up--hide:hover {
+  .scroll-up:hover {
     border: .125em solid #112e42;
     color: #112e42
   }
