@@ -253,6 +253,50 @@ table {
   opacity: .1;
   background-color: #112e42
 }
+.animate-item {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: #081b29;
+  z-index: 110
+}
+@-webkit-keyframes showRight {
+  100% {
+    width: 0
+  }
+}
+@keyframes showRight {
+  100% {
+    width: 0
+  }
+}
+._watcher-view .animate-item {
+  -webkit-animation: showRight 1s ease forwards;
+  animation: showRight 1s ease forwards;
+  -webkit-animation-delay: calc(.3s * var(--i));
+  animation-delay: calc(.3s * var(--i))
+}
+.about__wrap-cadr .animate-item {
+  position: absolute;
+  right: -.8125em;
+  top: -1.0625em;
+  width: 140%;
+  height: 115%;
+  background: #112e42;
+  z-index: 2
+}
+.about__container .animate-item,
+.skills__container .animate-item {
+  background: #112e42
+}
+.education__inner-border .animate-item {
+  right: -2%;
+  top: 0;
+  width: 105%;
+  height: 100%
+}
 .header--setup {
   position: fixed;
   left: 0;
@@ -267,7 +311,7 @@ table {
   transition: background-color .2s ease-in
 }
 .header.sticky {
-  background-color: #081b29;
+  background: #081b29;
   border-bottom: .03125em solid #c47b05
 }
 .header__container {
@@ -353,7 +397,8 @@ body {
   -moz-column-gap: 1.875em;
   column-gap: 1.875em;
   row-gap: 1.25em;
-  align-items: center
+  align-items: center;
+  z-index: 2
 }
 .links-box--setup:not(:last-child) {
   margin-bottom: 3.125em
@@ -379,7 +424,8 @@ body {
   font-weight: 700;
   line-height: 1.3;
   position: relative;
-  display: inline-block
+  display: inline-block;
+  padding-left: .0625em
 }
 .text-box__title:not(:last-child) {
   margin-bottom: 1.5625rem
@@ -398,7 +444,9 @@ body {
   background: linear-gradient(to bottom,#00abf0 0,#2989d8 100%,#00abf0 100%);
   background-repeat: no-repeat;
   -webkit-background-clip: text;
-  background-position: -10.25em 0;
+  background-position: -10.25em 0
+}
+._watcher-view .text-box__specialization {
   -webkit-animation: bgtitleSpecialization 6s linear infinite;
   animation: bgtitleSpecialization 6s linear infinite;
   -webkit-animation-delay: 2s;
@@ -434,7 +482,9 @@ body {
   width: 0;
   height: 100%;
   border-right: .125rem solid #00abf0;
-  z-index: -1;
+  z-index: -1
+}
+._watcher-view .text-box__specialization::before {
   -webkit-animation: cursorTitle 6s linear infinite;
   animation: cursorTitle 6s linear infinite;
   -webkit-animation-delay: 2s;
@@ -496,6 +546,7 @@ body {
   text-align: center;
   text-transform: capitalize;
   z-index: 1;
+  position: relative;
   overflow: hidden;
   transition: color .4s ease-in-out
 }
@@ -566,12 +617,14 @@ body {
 }
 .title--item {
   position: relative;
+  z-index: 2;
   font-size: clamp(2.875rem,2.608rem + 1.33vw,3.75rem);
   text-align: center;
   font-weight: 700;
   text-transform: capitalize;
   line-height: 1.3;
-  position: relative
+  position: relative;
+  z-index: 2
 }
 .title--item:not(:last-child) {
   margin-bottom: clamp(1.563rem,1.086rem + 2.38vw,3.125rem)
@@ -596,7 +649,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative
+  position: relative;
+  z-index: 2
 }
 .about__wrap-cadr:not(:last-child) {
   margin-bottom: 3.125em
@@ -674,16 +728,22 @@ body {
 }
 .about__text-box {
   text-align: center;
-  position: relative
+  position: relative;
+  z-index: 2
 }
 .about__text-box:not(:last-child) {
   margin-bottom: 3.5em
+}
+.about__subcaption {
+  position: relative
 }
 .about__paragraph {
   max-width: 68.75em;
   font-size: clamp(.938rem,.88rem + .29vw,1.125rem);
   line-height: 1.4;
-  text-align: justify
+  text-align: justify;
+  position: relative;
+  z-index: 2
 }
 .about__paragraph:not(:last-child) {
   margin-bottom: 2em
@@ -707,10 +767,12 @@ body {
 }
 .education__caption {
   position: relative;
+  z-index: 2;
   display: block
 }
 .education__inner-border {
-  position: relative
+  position: relative;
+  z-index: 2
 }
 .education__unit-box {
   position: relative;
@@ -833,7 +895,8 @@ body {
 }
 .skills__caption {
   position: relative;
-  display: inline-block
+  display: inline-block;
+  z-index: 2
 }
 .skills__box {
   border: .1875em solid #00abf0;
@@ -854,7 +917,8 @@ body {
   transition: width .55s ease-in
 }
 .skills__inner {
-  position: relative
+  position: relative;
+  z-index: 2
 }
 .skills__progress {
   padding: clamp(.5rem,.348rem + .76vw,1rem) 0
@@ -911,7 +975,7 @@ body {
 .contact__input {
   position: relative;
   overflow: hidden;
-  z-index: 1;
+  z-index: 2;
   flex: 1 1 28.75em;
   font-family: inherit
 }
@@ -981,7 +1045,7 @@ body {
   justify-content: center;
   background-color: #112e42;
   transition: all .45s ease-in;
-  z-index: 1;
+  z-index: 10;
   overflow: hidden
 }
 .scroll-up--hide::before {
@@ -1041,6 +1105,31 @@ body {
   }
 }
 @media (min-width:74.75em) {
+  .animate-item-pc {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: #081b29;
+    z-index: 110
+  }
+  @-webkit-keyframes showRight {
+    100% {
+      width: 0
+    }
+  }
+  @keyframes showRight {
+    100% {
+      width: 0
+    }
+  }
+  ._watcher-view .animate-item-pc {
+    -webkit-animation: showRight 1s ease forwards;
+    animation: showRight 1s ease forwards;
+    -webkit-animation-delay: calc(.3s * var(--i));
+    animation-delay: calc(.3s * var(--i))
+  }
   .hero__container {
     display: grid;
     -webkit-column-gap: 1.875em;
@@ -1128,17 +1217,34 @@ body {
   }
 }
 @media (max-width:50.18625em) {
-  .menu__body {
+  .menu__zalka {
     background: #112e42;
     position: fixed;
     width: 100%;
-    height: 60%;
+    height: 55%;
     left: -100%;
     top: 4.375rem;
     overflow: auto;
     padding: 3.125rem .9375rem .9375rem 1.875rem;
     transition: left .3s;
-    border-bottom: .0625em solid #c47b05
+    border-bottom: .0625em solid #c47b05;
+    transition-delay: .15s;
+    z-index: -1
+  }
+  .menu-open .menu__zalka {
+    left: 0
+  }
+  .menu__body {
+    background: #00abf0;
+    position: fixed;
+    width: 100%;
+    height: 55%;
+    left: -100%;
+    top: 4.375rem;
+    overflow: auto;
+    padding: 3.125rem .9375rem .9375rem 1.875rem;
+    transition: left .3s;
+    z-index: 2
   }
   .menu__body::before {
     content: "";
@@ -1160,7 +1266,7 @@ body {
   }
   .menu__list {
     flex-direction: column;
-    gap: 1.5em;
+    gap: 1.25em;
     font-size: 2.25rem
   }
   .icon-menu {
