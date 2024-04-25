@@ -253,6 +253,10 @@ table {
   opacity: .1;
   background-color: #112e42
 }
+.text-box__specialization .animate-item {
+  left: 20px;
+  width: 105%
+}
 .animate-item {
   position: absolute;
   right: 0;
@@ -1111,10 +1115,10 @@ body {
 @media (min-width:74.5em) {
   .animate-item-px {
     position: absolute;
-    right: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
+    right: 2px;
+    top: -5px;
+    width: 119%;
+    height: 115%;
     background: #081b29;
     z-index: 110
   }
@@ -1405,14 +1409,16 @@ body {
   .scroll-up--hide {
     cursor: pointer
   }
-  .scroll-up--hide:hover {
-    border: .125em solid #112e42;
-    color: #112e42
+  .scroll-up--hide:hover::before {
+    width: 100%
   }
+}
+@media (any-hover:hover) and (pointer:fine) {
   .scroll-up--hide {
     cursor: pointer
   }
-  .scroll-up--hide:hover::before {
-    width: 100%
+  .scroll-up--hide:hover {
+    border: .125em solid #112e42;
+    color: #112e42
   }
 }
