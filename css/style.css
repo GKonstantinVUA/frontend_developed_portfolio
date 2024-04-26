@@ -1112,7 +1112,7 @@ body {
 @media (min-width:74.5em) {
   .animate-item-px {
     position: absolute;
-    right: 2px;
+    right: -2px;
     top: -5px;
     width: 119%;
     height: 115%;
