@@ -208,12 +208,6 @@ table {
   -o-object-fit: contain;
   object-fit: contain
 }
-* {
-  cursor: none;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box
-}
 .cursor-big {
   width: 3.125em;
   height: 3.125em;
@@ -1173,6 +1167,14 @@ body {
   .hero__poster-wrap:hover::before {
     background-color: #081b29;
     opacity: .9
+  }
+}
+@media (min-width:48em) {
+  * {
+    cursor: none;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box
   }
 }
 @media (max-width:74.74875em) {

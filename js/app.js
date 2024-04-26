@@ -1,6 +1,26 @@
 (() => {
     "use strict";
     const modules_flsModules = {};
+    let isMobile = {
+        Android: function() {
+            return navigator.userAgent.match(/Android/i);
+        },
+        BlackBerry: function() {
+            return navigator.userAgent.match(/BlackBerry/i);
+        },
+        iOS: function() {
+            return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+        },
+        Opera: function() {
+            return navigator.userAgent.match(/Opera Mini/i);
+        },
+        Windows: function() {
+            return navigator.userAgent.match(/IEMobile/i);
+        },
+        any: function() {
+            return isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows();
+        }
+    };
     function getHash() {
         if (location.hash) return location.hash.replace("#", "");
     }
@@ -256,36 +276,45 @@
             }));
         }
     }), 0);
-    var cursor = document.querySelector(".cursor-big");
-    var cursorinner = document.querySelector(".cursor-small");
-    var a = document.querySelectorAll("a");
-    document.addEventListener("mousemove", (function(e) {
-        e.clientX;
-        e.clientY;
-        cursor.style.transform = `translate3d(calc(${e.clientX}px - 50%), calc(${e.clientY}px - 50%), 0)`;
-    }));
-    document.addEventListener("mousemove", (function(e) {
-        var x = e.clientX;
-        var y = e.clientY;
-        cursorinner.style.left = x + "px";
-        cursorinner.style.top = y + "px";
-    }));
-    document.addEventListener("mousedown", (function() {
-        cursor.classList.add("click");
-        cursorinner.classList.add("cursorinnerhover");
-    }));
-    document.addEventListener("mouseup", (function() {
-        cursor.classList.remove("click");
-        cursorinner.classList.remove("cursorinnerhover");
-    }));
-    a.forEach((item => {
-        item.addEventListener("mouseover", (() => {
-            cursor.classList.add("hover");
-        }));
-        item.addEventListener("mouseleave", (() => {
-            cursor.classList.remove("hover");
-        }));
-    }));
+    function showCursor() {
+        if (!isMobile.any()) {
+            const wrapper = document.querySelector(".wrapper");
+            if (wrapper) {
+                wrapper.insertAdjacentHTML("beforeend", `<div class="cursor-big""></div> <div class="cursor-small"></div>`);
+                var cursor = document.querySelector(".cursor-big");
+                var cursorinner = document.querySelector(".cursor-small");
+                var a = document.querySelectorAll("a");
+                document.addEventListener("mousemove", (function(e) {
+                    e.clientX;
+                    e.clientY;
+                    cursor.style.transform = `translate3d(calc(${e.clientX}px - 50%), calc(${e.clientY}px - 50%), 0)`;
+                }));
+                document.addEventListener("mousemove", (function(e) {
+                    var x = e.clientX;
+                    var y = e.clientY;
+                    cursorinner.style.left = x + "px";
+                    cursorinner.style.top = y + "px";
+                }));
+                document.addEventListener("mousedown", (function() {
+                    cursor.classList.add("click");
+                    cursorinner.classList.add("cursorinnerhover");
+                }));
+                document.addEventListener("mouseup", (function() {
+                    cursor.classList.remove("click");
+                    cursorinner.classList.remove("cursorinnerhover");
+                }));
+                a.forEach((item => {
+                    item.addEventListener("mouseover", (() => {
+                        cursor.classList.add("hover");
+                    }));
+                    item.addEventListener("mouseleave", (() => {
+                        cursor.classList.remove("hover");
+                    }));
+                }));
+            }
+        }
+    }
+    showCursor();
     const btnUp = {
         el: document.querySelector(".scroll-up"),
         show() {
